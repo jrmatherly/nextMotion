@@ -15,6 +15,9 @@ const config: Config = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
     './node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
   prefix: '',
   theme: {
     container: {
@@ -78,6 +81,42 @@ const config: Config = {
         sm: 'calc(var(--radius) - 4px)',
       },
       keyframes: {
+        // Fade up and down
+        'fade-up': {
+          '0%': {
+            opacity: '0',
+            transform: 'translateY(10px)',
+          },
+          '80%': {
+            opacity: '0.6',
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateY(0px)',
+          },
+        },
+        'fade-down': {
+          '0%': {
+            opacity: '0',
+            transform: 'translateY(-10px)',
+          },
+          '80%': {
+            opacity: '0.6',
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateY(0px)',
+          },
+        },
+        // Tooltip
+        'slide-up-fade': {
+          '0%': { opacity: '0', transform: 'translateY(6px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        'slide-down-fade': {
+          '0%': { opacity: '0', transform: 'translateY(-6px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
         'accordion-down': {
           from: {
             height: '0',
@@ -120,14 +159,32 @@ const config: Config = {
             'background-position': 'calc(100% + var(--shimmer-width)) 0',
           },
         },
+        shine: {
+          '0%': {
+            'background-position': '0% 0%',
+          },
+          '50%': {
+            'background-position': '100% 100%',
+          },
+          to: {
+            'background-position': '0% 0%',
+          },
+        },
       },
       animation: {
+        // Fade up and down
+        'fade-up': 'fade-up 0.5s',
+        'fade-down': 'fade-down 0.5s',
+        // Tooltip
+        'slide-up-fade': 'slide-up-fade 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
+        'slide-down-fade': 'slide-down-fade 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         spotlight: 'spotlight 2s ease .75s 1 forwards',
         marquee: 'marquee var(--duration) linear infinite',
         'marquee-vertical': 'marquee-vertical var(--duration) linear infinite',
         shimmer: 'shimmer 8s infinite',
+        shine: 'shine var(--duration) infinite linear',
       },
       fontFamily: {
         mono: [
@@ -444,8 +501,18 @@ const config: Config = {
         },
       },
     }),
+    require('@tailwindcss/forms'),
     require('tailwindcss-animate'),
     require('@tailwindcss/typography'),
+    require('tailwindcss/plugin'),
+    require('tailwindcss/plugin')(
+      ({
+        addVariant,
+      }: { addVariant: (name: string, definition: string) => void }) => {
+        addVariant('radix-side-top', '&[data-side="top"]');
+        addVariant('radix-side-bottom', '&[data-side="bottom"]');
+      }
+    ),
     addVariablesForColors,
     function ({
       matchUtilities,
