@@ -28,6 +28,7 @@ export const env = createEnv({
       .refine(
         url =>
           url.startsWith('postgres://') ||
+          url.startsWith('postgresql://') ||
           url.startsWith('mysql://') ||
           url.startsWith('sqlite://'),
         { message: 'DATABASE_URL must be a valid database connection string' }

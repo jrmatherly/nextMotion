@@ -1,7 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
-/* eslint-disable prefer-const */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { heroui } from '@heroui/theme';
 import type { Config } from 'tailwindcss';
 
@@ -14,10 +10,10 @@ const {
 const config: Config = {
   darkMode: ['class'],
   content: [
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
-    './node_modules/@heroui/theme/dist/**/*.{ts,tsx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   prefix: '',
   theme: {

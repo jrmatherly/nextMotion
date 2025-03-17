@@ -14,7 +14,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${GeistSans.variable} dark`}>
+    <html lang="en" className={`${GeistSans.className} antialiased dark`}>
       <body>
         {children}
         <Toaster />
