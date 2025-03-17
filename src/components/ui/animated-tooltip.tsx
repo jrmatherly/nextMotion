@@ -1,13 +1,14 @@
-"use client";
-import Image from "next/image";
-import React, { useState } from "react";
+'use client';
 import {
-  motion,
-  useTransform,
   AnimatePresence,
+  motion,
   useMotionValue,
   useSpring,
-} from "framer-motion";
+  useTransform,
+} from 'framer-motion';
+import Image from 'next/image';
+// eslint-disable-next-line lint/correctness/noUnusedImports -- used indirectly
+import React, { useState } from 'react';
 
 export const AnimatedTooltip = ({
   items,
@@ -32,8 +33,8 @@ export const AnimatedTooltip = ({
     useTransform(x, [-100, 100], [-50, 50]),
     springConfig
   );
-  const handleMouseMove = (event: any) => {
-    const halfWidth = event.target.offsetWidth / 2;
+  const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
+    const halfWidth = event.currentTarget.offsetWidth / 2;
     x.set(event.nativeEvent.offsetX - halfWidth); // set the x value, which is then used in transform and rotate
   };
 
@@ -55,7 +56,7 @@ export const AnimatedTooltip = ({
                   y: 0,
                   scale: 1,
                   transition: {
-                    type: "spring",
+                    type: 'spring',
                     stiffness: 260,
                     damping: 10,
                   },
@@ -64,7 +65,7 @@ export const AnimatedTooltip = ({
                 style={{
                   translateX: translateX,
                   rotate: rotate,
-                  whiteSpace: "nowrap",
+                  whiteSpace: 'nowrap',
                 }}
                 className="absolute -top-16 -left-1/2 translate-x-1/2 flex text-xs  flex-col items-center justify-center rounded-md bg-black z-50 shadow-xl px-4 py-2"
               >

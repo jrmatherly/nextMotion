@@ -1,4 +1,4 @@
-import { cn } from "~/lib/utils";
+import { cn } from '~/lib/utils';
 
 type SectionHeadingProps = {
   title: string;
@@ -13,7 +13,9 @@ export function SectionHeading({
 }: SectionHeadingProps) {
   return (
     <div
-      className={`flex flex-col items-center justify-center gap-2 md:flex-row md:items-baseline md:gap-5`}
+      className={
+        'flex flex-col items-center justify-center gap-2 md:flex-row md:items-baseline md:gap-5'
+      }
     >
       <h2
         className={`gradient-text text-center text-24-40 font-extrabold ${cn(className)}`}

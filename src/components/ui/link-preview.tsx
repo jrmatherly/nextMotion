@@ -1,16 +1,16 @@
-"use client";
-import * as HoverCardPrimitive from "@radix-ui/react-hover-card";
-import Image from "next/image";
-import { encode } from "qss";
-import React from "react";
+'use client';
+import * as HoverCardPrimitive from '@radix-ui/react-hover-card';
 import {
   AnimatePresence,
   motion,
   useMotionValue,
   useSpring,
-} from "framer-motion";
-import Link from "next/link";
-import { cn } from "~/lib/utils";
+} from 'framer-motion';
+import Image from 'next/image';
+import Link from 'next/link';
+import { encode } from 'qss';
+import React from 'react';
+import { cn } from '~/lib/utils';
 
 type LinkPreviewProps = {
   children: React.ReactNode;
@@ -33,20 +33,20 @@ export const LinkPreview = ({
   height = 125,
   quality = 50,
   isStatic = false,
-  imageSrc = "",
+  imageSrc = '',
 }: LinkPreviewProps) => {
-  let src;
+  let src: string;
   if (!isStatic) {
     const params = encode({
       url,
       screenshot: true,
       meta: false,
-      embed: "screenshot.url",
-      colorScheme: "dark",
-      "viewport.isMobile": true,
-      "viewport.deviceScaleFactor": 1,
-      "viewport.width": width * 3,
-      "viewport.height": height * 3,
+      embed: 'screenshot.url',
+      colorScheme: 'dark',
+      'viewport.isMobile': true,
+      'viewport.deviceScaleFactor': 1,
+      'viewport.width': width * 3,
+      'viewport.height': height * 3,
     });
     src = `https://api.microlink.io/?${params}`;
   } else {
@@ -66,8 +66,8 @@ export const LinkPreview = ({
 
   const translateX = useSpring(x, springConfig);
 
-  const handleMouseMove = (event: any) => {
-    const targetRect = event.target.getBoundingClientRect();
+  const handleMouseMove = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    const targetRect = event.currentTarget.getBoundingClientRect();
     const eventOffsetX = event.clientX - targetRect.left;
     const offsetFromCenter = (eventOffsetX - targetRect.width / 2) / 2; // Reduce the effect to make it subtle
     x.set(offsetFromCenter);
@@ -91,13 +91,13 @@ export const LinkPreview = ({
       <HoverCardPrimitive.Root
         openDelay={50}
         closeDelay={100}
-        onOpenChange={(open) => {
+        onOpenChange={open => {
           setOpen(open);
         }}
       >
         <HoverCardPrimitive.Trigger
           onMouseMove={handleMouseMove}
-          className={cn("text-black dark:text-white", className)}
+          className={cn('text-black dark:text-white', className)}
           href={url}
           target="_blank"
         >
@@ -119,7 +119,7 @@ export const LinkPreview = ({
                   y: 0,
                   scale: 1,
                   transition: {
-                    type: "spring",
+                    type: 'spring',
                     stiffness: 260,
                     damping: 20,
                   },

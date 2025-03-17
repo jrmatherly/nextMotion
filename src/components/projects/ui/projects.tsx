@@ -1,5 +1,5 @@
-import { Timeline } from "~/components/ui/timeline";
-import { timelineData } from "../data";
+import { Timeline } from '~/components/ui/timeline';
+import { timelineData } from '../data';
 
 export function Projects() {
   return (

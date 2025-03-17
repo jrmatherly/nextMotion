@@ -1,20 +1,21 @@
-import Markdown from "marked-react";
-import Editor from "@monaco-editor/react";
+import Editor from '@monaco-editor/react';
+import Markdown from 'marked-react';
 import {
-  useRef,
-  useEffect,
-  type MutableRefObject,
   type Dispatch,
+  type MutableRefObject,
   type SetStateAction,
-} from "react";
-import { useMessage } from "~/contexts/message-context";
+  useEffect,
+  useRef,
+} from 'react';
+import { useMessage } from '~/contexts/message-context';
 
 interface TextEditorProps {
+  id?: string;
   message: string;
   setMessage: Dispatch<SetStateAction<string>>;
 }
 
-const TextEditor = ({ message, setMessage }: TextEditorProps) => {
+const TextEditor = ({ id, message, setMessage }: TextEditorProps) => {
   const { setMessageContent } = useMessage();
   const messageRef: MutableRefObject<HTMLDivElement | null> = useRef(null);
 
@@ -23,35 +24,38 @@ const TextEditor = ({ message, setMessage }: TextEditorProps) => {
       const content = messageRef.current.innerHTML;
       setMessageContent(content);
     }
-  }, [message, setMessageContent]);
+  }, [setMessageContent]);
 
   function handleEditorChange(value: string | undefined) {
-    setMessage(value ?? "");
+    setMessage(value ?? '');
   }
 
   return (
     <div className="flex flex-col gap-4 md:flex-row">
-      <div className="w-full md:w-1/2">
+      <div className="h-[300px] w-full rounded-lg border md:w-1/2">
         <Editor
-          className="h-[300px]"
+          height="300px"
           defaultLanguage="markdown"
-          theme="vs-dark"
-          onChange={handleEditorChange}
           value={message}
+          onChange={handleEditorChange}
+          theme="vs-dark"
+          options={{
+            minimap: { enabled: false },
+            fontSize: 14,
+            wordWrap: 'on',
+          }}
+          aria-labelledby={id ? id : undefined}
         />
       </div>
-      <div className="relative max-h-[500px] w-full md:w-1/2">
-        <h3 className="sticky top-1">Email Preview</h3>
-        <div
-          ref={messageRef}
-          id="markdown"
-          className="h-full w-full overflow-y-auto text-sm"
-        >
-          <Markdown value={message} />
-        </div>
+      <div
+        ref={messageRef}
+        className="prose h-[300px] w-full overflow-y-auto rounded-lg border p-4 dark:prose-invert md:w-1/2"
+      >
+        <Markdown value={message} />
       </div>
     </div>
   );
 };
 
-export default TextEditor;
+export { TextEditor };
+export type { TextEditorProps };

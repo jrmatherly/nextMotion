@@ -1,12 +1,12 @@
-import { motion } from "framer-motion";
-import { LinkPreview } from "./link-preview";
-import { Button } from "./button";
-import { Project } from "../projects/ui/project";
-import Link from "next/link";
-import type { TimelineEntry } from "./timeline";
-import { useGitHubRepoData } from "~/hooks/useGitHubRepoData";
-import { NumberTicker } from "./number-ticker";
-import { FaStar } from "react-icons/fa";
+import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { FaStar } from 'react-icons/fa';
+import { useGitHubRepoData } from '~/hooks/useGitHubRepoData';
+import { Project } from '../projects/ui/project';
+import { Button } from './button';
+import { LinkPreview } from './link-preview';
+import { NumberTicker } from './number-ticker';
+import type { TimelineEntry } from './timeline';
 
 type TimelineHeadingProps = {
   entry: TimelineEntry;
@@ -15,7 +15,7 @@ type TimelineHeadingProps = {
 export function TimelineHeading({ entry }: TimelineHeadingProps) {
   const repo = useGitHubRepoData(
     entry.projectUrls?.repo?.owner,
-    entry.projectUrls?.repo?.name,
+    entry.projectUrls?.repo?.name
   );
   const site = entry.projectUrls?.site;
 
@@ -28,7 +28,7 @@ export function TimelineHeading({ entry }: TimelineHeadingProps) {
         <motion.h3
           initial={{ opacity: 0.5 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ margin: "-200px" }}
+          viewport={{ margin: '-200px' }}
           className="hidden text-xl font-bold md:block md:pl-20 md:text-5xl"
         >
           {entry.title}
@@ -49,9 +49,9 @@ export function TimelineHeading({ entry }: TimelineHeadingProps) {
                 </LinkPreview>
                 {entry.projectUrls?.repo?.showStarCount && (
                   <motion.div
-                    initial={{ display: "hidden" }}
-                    whileInView={{ display: "flex" }}
-                    viewport={{ once: true, margin: "-60px" }}
+                    initial={{ display: 'hidden' }}
+                    whileInView={{ display: 'flex' }}
+                    viewport={{ once: true, margin: '-60px' }}
                     className="gap-1"
                   >
                     <FaStar
@@ -91,9 +91,9 @@ export function TimelineHeading({ entry }: TimelineHeadingProps) {
                 </Link>
                 {entry.projectUrls?.repo?.showStarCount && (
                   <motion.div
-                    initial={{ display: "hidden" }}
-                    whileInView={{ display: "flex" }}
-                    viewport={{ once: true, margin: "-60px" }}
+                    initial={{ display: 'hidden' }}
+                    whileInView={{ display: 'flex' }}
+                    viewport={{ once: true, margin: '-60px' }}
                     className="gap-1"
                   >
                     <FaStar color="gold" size={20} />

@@ -1,5 +1,5 @@
 import { SectionHeading } from '~/components/ui/section-heading';
-import * as data from '../data.json'
+import * as data from '../data.json';
 
 export function About() {
   return (

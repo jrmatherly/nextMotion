@@ -1,5 +1,5 @@
-import { title } from "../data";
-import { Logo } from "~/components/ui/logo";
+import { Logo } from '~/components/ui/logo';
+import { title } from '../data';
 
 export function Title() {
   function parseForHighlightedWords(text: string) {
@@ -7,13 +7,16 @@ export function Title() {
 
     return wordsAndSpaces.map((chunk, index) => {
       const isHighlighted = title.highlight
-        .map((word) => word.toLowerCase())
+        .map(word => word.toLowerCase())
         .includes(chunk.trim().toLowerCase());
+
+      // Create a stable key based on the content and position
+      const stableKey = `word-${chunk.trim() || 'space'}-${index}`;
 
       return (
         <span
-          key={index}
-          className={`${isHighlighted ? "text-white drop-shadow-[0px_0px_3px_white]" : ""}`}
+          key={stableKey}
+          className={`${isHighlighted ? 'text-white drop-shadow-[0px_0px_3px_white]' : ''}`}
         >
           {chunk}
         </span>
@@ -29,12 +32,15 @@ export function Title() {
       </h1> */}
 
       {/* Or use a logo */}
-      <h1 className="text-nowrap text-center text-48-96 font-bold">
-        {title.plainText}
-        <Logo className="m-auto w-full max-w-[600px]" glow />
-      </h1>
-      <div className="mb-8 text-center text-xl font-light text-muted-foreground">
-        {parseForHighlightedWords(title.subTitle)}
+      <div className="flex flex-col items-center justify-center gap-2">
+        <Logo className="h-[100px] w-[100px] md:h-[150px] md:w-[150px]" />
+        <h1 className="text-nowrap text-center text-48-96 font-bold">
+          {title.plainText}
+          {title.glowText}
+        </h1>
+        <h2 className="text-center text-18-24 font-light text-muted-foreground">
+          {parseForHighlightedWords(title.subTitle)}
+        </h2>
       </div>
     </div>
   );

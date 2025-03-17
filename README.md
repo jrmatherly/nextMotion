@@ -42,8 +42,8 @@ To run this project locally, follow the steps below:
 
 - You only need two environment variables (which will be used for nodemailer):
 
-  - `MY_EMAIL`
-  - `APP_PASSWORD`
+  - `EMAIL_USERNAME`
+  - `EMAIL_APP_PASSWORD`
 
 - This project is using `gmail` for the nodemailer transport service, so you'll want to create an app password [here](https://myaccount.google.com/apppasswords). This allows your application (this portfolio) to send emails using your Gmail account.
 

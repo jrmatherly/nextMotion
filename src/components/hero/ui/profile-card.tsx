@@ -1,25 +1,25 @@
-"use client";
+'use client';
 
-import { CardBody, CardContainer, CardItem } from "~/components/ui/3d-card";
+import Link from 'next/link';
+import { Card3D, CardItem } from '~/components/ui/3d-card';
+import { AnimatedTooltip } from '~/components/ui/animated-tooltip';
+import { BackgroundGradient } from '~/components/ui/background-gradient';
+import { Button } from '~/components/ui/button';
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "~/components/ui/card";
-import Link from "next/link";
-import { Button } from "~/components/ui/button";
-import { AnimatedTooltip } from "~/components/ui/animated-tooltip";
-import { BackgroundGradient } from "~/components/ui/background-gradient";
-import { profileCard } from "../data";
+} from '~/components/ui/card';
+import { profileCard } from '../data';
 
 export function ProfileCard() {
   return (
     <div className="hidden grow basis-1 justify-center lg:flex">
       <BackgroundGradient containerClassName="w-fit">
-        <CardContainer containerClassName="py-0">
-          <CardBody className="group/card flex flex-col rounded-[22px] bg-card p-6 shadow-[-5px_-3px_#ffffff17_inset] transition-all duration-300 hover:shadow-[-2px_-2px_#ffffff17_inset]">
+        <Card3D containerClassName="py-0">
+          <div className="group/card flex flex-col rounded-[22px] bg-card p-6 shadow-[-5px_-3px_#ffffff17_inset] transition-all duration-300 hover:shadow-[-2px_-2px_#ffffff17_inset]">
             <CardItem
               translateZ="100"
               className="flex w-full gap-5 rounded-xl transition-all group-hover/card:shadow-lg"
@@ -51,9 +51,9 @@ export function ProfileCard() {
               className="mt-auto flex w-full gap-5 rounded-xl"
             >
               <div className="flex w-full gap-5">
-                {profileCard.socialUrls.map((social, i) => (
+                {profileCard.socialUrls.map((social) => (
                   <Link
-                    key={i}
+                    key={social.url}
                     className="group inline-block"
                     target="_blank"
                     href={social.url}
@@ -65,8 +65,8 @@ export function ProfileCard() {
                 ))}
               </div>
             </CardItem>
-          </CardBody>
-        </CardContainer>
+          </div>
+        </Card3D>
       </BackgroundGradient>
     </div>
   );

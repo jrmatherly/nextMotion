@@ -1,5 +1,6 @@
-import React from "react";
-import { createContext, useContext, useState, type ReactNode } from "react";
+// biome-ignore lint/correctness/noUnusedImports: not used directly
+import React from 'react';
+import { type ReactNode, createContext, useContext, useState } from 'react';
 
 interface MessageContextType {
   messageContent: string;
@@ -9,7 +10,7 @@ interface MessageContextType {
 const MessageContext = createContext<MessageContextType | undefined>(undefined);
 
 export const MessageProvider = ({ children }: { children: ReactNode }) => {
-  const [messageContent, setMessageContent] = useState<string>("");
+  const [messageContent, setMessageContent] = useState<string>('');
 
   return (
     <MessageContext.Provider value={{ messageContent, setMessageContent }}>
@@ -21,7 +22,7 @@ export const MessageProvider = ({ children }: { children: ReactNode }) => {
 export const useMessage = () => {
   const context = useContext(MessageContext);
   if (context === undefined) {
-    throw new Error("useMessage must be used within a MessageProvider");
+    throw new Error('useMessage must be used within a MessageProvider');
   }
   return context;
 };

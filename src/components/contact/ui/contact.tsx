@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { SectionHeading } from "~/components/ui/section-heading";
-import data from "../data.json";
-import { Form } from "./form";
-import { MessageProvider } from "~/contexts/message-context";
+import { SectionHeading } from '~/components/ui/section-heading';
+import { MessageProvider } from '~/contexts/message-context';
+import data from '../data.json';
+import { Form } from './form';
 
 export function Contact() {
   return (

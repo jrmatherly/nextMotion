@@ -1,7 +1,7 @@
-"use client";
-import { cn } from "~/lib/utils";
-import { useMotionValue, motion, useMotionTemplate } from "framer-motion";
-import React from "react";
+'use client';
+import { motion, useMotionTemplate, useMotionValue } from 'framer-motion';
+import React from 'react';
+import { cn } from '~/lib/utils';
 
 export const HeroHighlight = ({
   children,
@@ -29,8 +29,8 @@ export const HeroHighlight = ({
   return (
     <div
       className={cn(
-        "group relative flex h-[40rem] w-full items-center justify-center bg-white dark:bg-black",
-        containerClassName,
+        'group relative flex h-[40rem] w-full items-center justify-center bg-white dark:bg-black',
+        containerClassName
       )}
       onMouseMove={handleMouseMove}
     >
@@ -55,7 +55,7 @@ export const HeroHighlight = ({
         }}
       />
 
-      <div className={cn("relative z-20", className)}>{children}</div>
+      <div className={cn('relative z-20', className)}>{children}</div>
     </div>
   );
 };

@@ -1,12 +1,12 @@
-import { useForm } from "react-hook-form";
-import { useState } from "react";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useMessage } from "~/contexts/message-context";
-import { useToast } from "~/hooks/use-toast";
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { useMessage } from '~/contexts/message-context';
+import { useToast } from '~/hooks/use-sonner-toast';
 
 const formData = z.object({
-  name: z.string().min(1, { message: "Name is required" }),
+  name: z.string().min(1, { message: 'Name is required' }),
   email: z.string().email(),
 });
 
@@ -20,42 +20,42 @@ type FormData = z.infer<typeof formData>;
 type EmailData = z.infer<typeof emailData>;
 
 const useContactForm = () => {
-  const [message, setMessage] = useState<string>("");
+  const [message, setMessage] = useState<string>('');
   const { messageContent, setMessageContent } = useMessage();
   const { toast } = useToast();
 
   const { register, handleSubmit, watch, reset, formState } = useForm<FormData>(
     {
       defaultValues: {
-        name: "",
-        email: "",
+        name: '',
+        email: '',
       },
       resolver: zodResolver(formData),
-    },
+    }
   );
 
   const sendEmail = async (data: EmailData) => {
     try {
-      const response = await fetch("/api/email", {
-        method: "POST",
+      const response = await fetch('/api/email', {
+        method: 'POST',
         body: JSON.stringify(data),
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
       });
 
       if (!response.ok) {
-        throw new Error("Failed to send email");
+        throw new Error('Failed to send email');
       }
       reset();
       toast({
-        title: "Message Sent!",
+        title: 'Message Sent!',
         description: "I'll be in touch ASAP 🥳",
       });
-      setMessage("");
-      setMessageContent("");
+      setMessage('');
+      setMessageContent('');
     } catch (error) {
-      console.error("Error sending email:", error);
+      console.error('Error sending email:', error);
     }
   };
 

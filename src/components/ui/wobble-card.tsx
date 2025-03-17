@@ -1,7 +1,7 @@
-"use client";
-import React, { type CSSProperties, useState } from "react";
-import { motion } from "framer-motion";
-import { cn } from "~/lib/utils";
+'use client';
+import { motion } from 'framer-motion';
+import React, { type CSSProperties, useState } from 'react';
+import { cn } from '~/lib/utils';
 
 export const WobbleCard = ({
   children,
@@ -35,30 +35,30 @@ export const WobbleCard = ({
       style={{
         transform: isHovering
           ? `translate3d(${mousePosition.x}px, ${mousePosition.y}px, 0) scale3d(1, 1, 1)`
-          : "translate3d(0px, 0px, 0) scale3d(1, 1, 1)",
-        transition: "transform 0.1s ease-out",
+          : 'translate3d(0px, 0px, 0) scale3d(1, 1, 1)',
+        transition: 'transform 0.1s ease-out',
         ...style,
       }}
       className={cn(
-        "relative mx-auto w-full overflow-hidden rounded-lg bg-indigo-800",
-        containerClassName,
+        'relative mx-auto w-full overflow-hidden rounded-lg bg-indigo-800',
+        containerClassName
       )}
     >
       <div
         className="relative h-full overflow-hidden [background-image:radial-gradient(88%_100%_at_top,rgba(255,255,255,0.5),rgba(255,255,255,0))] sm:mx-0 sm:rounded-lg"
         style={{
           boxShadow:
-            "0 10px 32px rgba(34, 42, 53, 0.12), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.05), 0 4px 6px rgba(34, 42, 53, 0.08), 0 24px 108px rgba(47, 48, 55, 0.10)",
+            '0 10px 32px rgba(34, 42, 53, 0.12), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.05), 0 4px 6px rgba(34, 42, 53, 0.08), 0 24px 108px rgba(47, 48, 55, 0.10)',
         }}
       >
         <motion.div
           style={{
             transform: isHovering
               ? `translate3d(${-mousePosition.x}px, ${-mousePosition.y}px, 0) scale3d(1.03, 1.03, 1)`
-              : "translate3d(0px, 0px, 0) scale3d(1, 1, 1)",
-            transition: "transform 0.1s ease-out",
+              : 'translate3d(0px, 0px, 0) scale3d(1, 1, 1)',
+            transition: 'transform 0.1s ease-out',
           }}
-          className={cn("h-full px-6", className)}
+          className={cn('h-full px-6', className)}
         >
           <Noise />
           {children}
@@ -73,9 +73,9 @@ export const Noise = () => {
     <div
       className="absolute inset-0 h-full w-full scale-[1.2] transform opacity-10 [mask-image:radial-gradient(#fff,transparent,75%)]"
       style={{
-        backgroundImage: "url(/noise.webp)",
-        backgroundSize: "30%",
+        backgroundImage: 'url(/noise.webp)',
+        backgroundSize: '30%',
       }}
-    ></div>
+    />
   );
 };

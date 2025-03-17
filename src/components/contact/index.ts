@@ -1,1 +1,1 @@
-export * from "./ui/contact";
+export * from './ui/contact';

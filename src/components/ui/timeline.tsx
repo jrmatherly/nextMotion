@@ -1,14 +1,15 @@
-"use client";
-import { useScroll, useTransform, motion } from "framer-motion";
-import React, { useEffect, useRef, useState } from "react";
-import { sectionHeading } from "../projects/data";
-import { SectionHeading } from "./section-heading";
-import { TimelineHeading } from "./timeline-heading";
+'use client';
+import { motion, useScroll, useTransform } from 'framer-motion';
+// eslint-disable-next-line lint/correctness/noUnusedImports -- used indirectly
+import React, { useEffect, useRef, useState } from 'react';
+import { sectionHeading } from '../projects/data';
+import { SectionHeading } from './section-heading';
+import { TimelineHeading } from './timeline-heading';
 
 type ProjectUrls = {
   site?: {
     url: string;
-    icon: JSX.Element;
+    icon: React.ReactElement;
   };
   repo?: {
     owner: string;
@@ -42,11 +43,11 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
       const rect = ref.current.getBoundingClientRect();
       setHeight(rect.height);
     }
-  }, [ref]);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start 10%", "end 50%"],
+    offset: ['start 10%', 'end 50%'],
   });
 
   const heightTransform = useTransform(scrollYProgress, [0, 1], [0, height]);
@@ -59,12 +60,12 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
         subTitle={sectionHeading.subTitle}
       />
       <div ref={ref} className="relative mx-auto max-w-7xl pb-20">
-        {data.map((item) => (
+        {data.map(item => (
           <TimelineHeading key={item.title} entry={item} />
         ))}
         <div
           style={{
-            height: height + "px",
+            height: `${height}px`,
           }}
           className="absolute left-8 top-0 w-[2px] overflow-hidden bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent from-[0%] via-neutral-200 to-transparent to-[99%] [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)] dark:via-neutral-700 md:left-8"
         >

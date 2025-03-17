@@ -1,1 +1,1 @@
-export * from "./ui/about";
+export * from './ui/about';

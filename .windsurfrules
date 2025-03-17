@@ -1,0 +1,144 @@
+---
+
+# Technology Stack and Constraints
+
+## Core Technologies
+- Node.js: ^20.0.0
+- Next.js: ^15.2.0
+- React: ^19.0.0
+- AI Model: claude-3-5-sonnet-20241022
+- AI Model: claude-3-7-sonnet-20250224
+
+## Frontend
+- HeroUI: ^2.7.4 (previously known as NextUI)
+- Tailwind CSS: ^3.4.17
+- Tailwind Animate: ^1.0.7
+- Tailwind Merge: 2.6.0
+- Framer Motion: ^11.18.2
+- Zod: ^3.24.2
+
+## Backend
+- Auth.js (NextAuth): ^5
+- Python: ^3.12
+- FastAPI: ^0.115.7
+- pyVmomi: ^8.0.2.0
+
+## Development Tools
+- npm: ^11.1.0
+- Biome: ^1.9.4
+- PostCSS: ^8.5.3
+- Tailwind Variants: ^0.3.1
+- TypeScript: ^5.7.3
+
+## Analytics
+- umami: ^0.4.0
+
+# Project Structure Convention
+
+```
+my-next-app/
+├── app/
+│   ├── admin/
+│   ├── api/
+│   ├── auth/
+│   │   └── [...nextauth]/
+│   │       └── route.ts
+│   ├── error.tsx
+│   ├── layout.tsx
+│   ├── loading.tsx
+│   ├── not-found.tsx
+│   └── page.tsx
+├── components/
+│   ├── admin/
+│   ├── auth/
+│   ├── layout/
+│   ├── ui/
+│   ├── icons.tsx
+│   └── theme-toggle.tsx
+├── config/
+│   ├── certificates.ts
+│   ├── env.ts
+│   ├── metadata.ts
+│   ├── settings.ts
+│   └── site.ts
+├── hooks/
+│   ├── use-mobile.tsx
+│   ├── use-sonner-toast.tsx
+│   └── use-toast.ts
+├── lib/
+│   ├── api/
+│   ├── clients/
+│   │   ├── httpClient.ts
+│   │   └── pythonClient.ts
+│   └── utils.ts
+├── providers/
+│   ├── analytics-provider.tsx
+│   └── theme-provider.tsx
+├── public/
+│   ├── downloads/
+│   ├── favicon/
+│   ├── fonts/
+│   ├── images/
+│   ├── svg/
+│   ├── browserconfig.xml
+│   ├── favicon.ico
+│   └── manifest.json
+├── scripts/
+├── styles/
+│   ├── fonts.ts
+│   ├── globals.css
+│   └── primitives.ts
+├── types/
+│   ├── analytics.ts
+│   └── icons.ts
+├── utilities/
+│   └── logger.ts
+├── PYTHON/
+│   ├── .dockerignore
+│   ├── .env
+│   ├── .env.example
+│   ├── .gitignore
+│   ├── docker-compose.yml
+│   ├── Dockerfile
+│   ├── DOCKER-README.md
+│   ├── README.md
+│   ├── requirements.txt
+│   └── run.py
+├── .dockerignore
+├── .env
+├── .env.example
+├── .gitignore
+├── auth.ts
+├── biome.jsonc
+├── components.json
+├── docker-compose.yml
+├── DOCKER-README.md
+├── Dockerfile
+├── jest.config.js
+├── jest.setup.js
+├── middleware.ts
+├── next-sitemap.config.js
+├── next.config.ts
+├── package-lock.json
+├── package.json
+├── postcss.config.mjs
+├── README.md
+├── tailwind.config.ts
+└── tsconfig.json
+
+## Important Constraints
+
+1. **Version Management**
+   - Technology stack version changes require approval
+
+2. **Code Placement**
+   - UI components in `/components/ui/`
+   - Layouts in `/components/layout/`
+   - API endpoints in `/app/api/[endpoint]/route.ts`
+   - Reusable components in `/components/`
+   - Constant Configuration in `/config/`
+   - Custom Hooks in `/hooks/`
+   - Common Utility files in `/lib/`
+   - API-Related in `/lib/api/`
+
+---

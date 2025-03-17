@@ -1,5 +1,9 @@
-"use client";
+'use client';
 
+import Link from 'next/link';
+import { AnimatedTooltip } from '~/components/ui/animated-tooltip';
+import { BackgroundGradient } from '~/components/ui/background-gradient';
+import { Button } from '~/components/ui/button';
 import {
   Card,
   CardContent,
@@ -7,12 +11,8 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "~/components/ui/card";
-import Link from "next/link";
-import { Button } from "~/components/ui/button";
-import { AnimatedTooltip } from "~/components/ui/animated-tooltip";
-import { BackgroundGradient } from "~/components/ui/background-gradient";
-import { profileCard } from "../data";
+} from '~/components/ui/card';
+import { profileCard } from '../data';
 
 export function ProfileCardMobile() {
   return (
@@ -40,9 +40,9 @@ export function ProfileCardMobile() {
           </CardContent>
           <CardFooter>
             <div className="flex w-full gap-5">
-              {profileCard.socialUrls.map((social, i) => (
+              {profileCard.socialUrls.map((social) => (
                 <Link
-                  key={i}
+                  key={social.url}
                   className="group inline-block"
                   target="_blank"
                   href={social.url}

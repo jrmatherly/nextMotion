@@ -1,9 +1,9 @@
-import { useState, useEffect, useMemo } from "react";
-import { IoLogoGithub } from "react-icons/io";
+import { useEffect, useMemo, useState } from 'react';
+import { IoLogoGithub } from 'react-icons/io';
 
 export function useGitHubRepoData(
   owner: string | undefined,
-  repo: string | undefined,
+  repo: string | undefined
 ) {
   const [repoData, setRepoData] = useState<{
     url: string;
@@ -22,12 +22,12 @@ export function useGitHubRepoData(
 
   return useMemo(
     () => ({
-      url: repoData?.url ?? "",
+      url: repoData?.url ?? '',
       starCount: repoData?.starCount ?? 0,
       repoName: repo,
       icon: <IoLogoGithub size={20} />,
     }),
-    [repo, repoData],
+    [repo, repoData]
   );
 }
 
@@ -39,22 +39,21 @@ interface GitHubRepoData {
 
 async function getRepoStars(
   owner: string,
-  repo: string,
+  repo: string
 ): Promise<{ url: string; starCount: number }> {
   try {
     const response = await fetch(
-      `https://api.github.com/repos/${owner}/${repo}`,
+      `https://api.github.com/repos/${owner}/${repo}`
     );
     const data: GitHubRepoData = await response.json();
 
     if (response.ok) {
       return { url: data.html_url, starCount: data.stargazers_count };
-    } else {
-      console.error("Error fetching repo data:", data.message);
-      return { url: "", starCount: 0 };
     }
+    console.error('Error fetching repo data:', data.message);
+    return { url: '', starCount: 0 };
   } catch (error) {
-    console.error("Network or API error:", error);
-    return { url: "", starCount: 0 };
+    console.error('Network or API error:', error);
+    return { url: '', starCount: 0 };
   }
 }

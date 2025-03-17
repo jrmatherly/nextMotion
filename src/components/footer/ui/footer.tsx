@@ -1,4 +1,5 @@
-import React from "react";
+// biome-ignore lint/correctness/noUnusedImports: not used directly
+import React from 'react';
 
 export function Footer() {
   return (

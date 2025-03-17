@@ -1,4 +1,5 @@
-import React from "react";
+// eslint-disable-next-line lint/correctness/noUnusedImports -- used indirectly
+import * as React from 'react';
 
 export function Logo({
   className,
@@ -6,7 +7,7 @@ export function Logo({
 }: {
   className?: string;
   glow?: boolean;
-}): JSX.Element {
+}): React.ReactElement {
   return (
     <svg
       viewBox="0 0 78 38"
@@ -14,6 +15,7 @@ export function Logo({
       fill="none"
       strokeWidth="1"
       className={className}
+      aria-hidden="true"
     >
       <defs>
         <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">

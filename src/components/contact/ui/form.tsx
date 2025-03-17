@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import TextEditor from "./text-editor";
-import useContactForm from "../hooks/useContactForm";
-import { Label, LabelInputContainer } from "~/components/ui/label";
-import { Input } from "~/components/ui/input";
-import { Button } from "~/components/ui/button";
+import Link from 'next/link';
+import { Button } from '~/components/ui/button';
+import { Input } from '~/components/ui/input';
+import { Label, LabelInputContainer } from '~/components/ui/label';
+import useContactForm from '../hooks/useContactForm';
+import { TextEditor } from './text-editor';
 
 export function Form() {
   const { register, handleSubmit, formState, message, setMessage, onSubmit } =
@@ -27,7 +27,7 @@ export function Form() {
             id="name"
             placeholder="James Jonathan"
             type="text"
-            {...register("name")}
+            {...register('name')}
           />
         </LabelInputContainer>
         <LabelInputContainer>
@@ -35,13 +35,13 @@ export function Form() {
           <Input
             id="email"
             placeholder="jimmy@johns.io"
-            {...register("email")}
+            {...register('email')}
             type="email"
           />
         </LabelInputContainer>
       </div>
       <div>
-        <label className="mb-3 flex flex-col md:flex-row">
+        <label htmlFor="message-editor" className="mb-3 flex flex-col md:flex-row">
           <span className="flex flex-col items-baseline gap-1 md:flex-row">
             <span>Message</span>
             <span className="font-sans text-xs font-light text-muted-foreground md:text-sm">
@@ -50,18 +50,18 @@ export function Form() {
           </span>
           <Link
             target="_blank"
-            href={"https://www.markdownguide.org/cheat-sheet/"}
+            href={'https://www.markdownguide.org/cheat-sheet/'}
             className="mt-2 font-sans text-xs md:ml-auto md:mt-0 md:text-sm"
           >
             📃 <span className="underline">Markdown Cheatsheet</span>
           </Link>
         </label>
-        <TextEditor message={message} setMessage={setMessage} />
+        <TextEditor id="message-editor" message={message} setMessage={setMessage} />
         <Button className="mt-3 w-1/2">
           {formState.isSubmitting ? (
             <div className="h-8 w-8 animate-spin rounded-full border-4 border-muted-foreground border-t-violet-600" />
           ) : (
-            "Send Message"
+            'Send Message'
           )}
         </Button>
       </div>
